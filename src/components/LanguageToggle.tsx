@@ -9,7 +9,7 @@ const LanguageToggle = () => {
   return (
     <button 
       onClick={toggleLanguage}
-      className="px-4 py-2 font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition-colors duration-300"
+      className="px-4 py-2 font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-colors duration-300"
     >
       {language === 'en' ? 'తెలుగు' : 'English'}
     </button>

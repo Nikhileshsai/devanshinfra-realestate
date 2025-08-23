@@ -3,15 +3,31 @@ import React from 'react';
 import { Property } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface PropertyCardProps {
   property: Property;
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
+  const { language } = useLanguage();
+
+  const content = {
+    en: {
+      lakhs: 'Lakhs',
+      sqYards: 'sq. yards',
+      priceOnRequest: 'Price on request',
+    },
+    te: {
+      lakhs: 'లక్షలు',
+      sqYards: 'చ. గజాలు',
+      priceOnRequest: 'ధర అభ్యర్థనపై',
+    },
+  };
+
   return (
     <Link href={`/properties/${property.id}`} className="block">
-      <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out overflow-hidden transform hover:scale-105">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out overflow-hidden transform hover:scale-105">
         <div className="relative h-48 w-full">
           <Image
             src={property.image_urls?.[0] || '/placeholder.jpg'}
@@ -21,11 +37,11 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
           />
         </div>
         <div className="p-4">
-          <h3 className="text-xl font-bold">{property.project_name}</h3>
-          <p className="text-gray-600">{property.location}</p>
+          <h3 className="text-xl font-bold dark:text-white">{language === 'en' ? property.project_name : property.project_name_te || property.project_name}</h3>
+          <p className="text-gray-600 dark:text-gray-300">{language === 'en' ? property.location : property.location_te || property.location}</p>
           <div className="flex justify-between items-center mt-4">
-            <p className="text-lg font-semibold">{property.price ? `${property.price} Lakhs` : 'Price on request'}</p>
-            <p className="text-sm text-gray-500">{property.area_sq_yards ? `${property.area_sq_yards} sq. yards` : ''}</p>
+            <p className="text-lg font-semibold dark:text-white">{property.price ? `${property.price} ${content[language].lakhs}` : content[language].priceOnRequest}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{property.area_sq_yards ? `${property.area_sq_yards} ${content[language].sqYards}` : ''}</p>
           </div>
         </div>
       </div>

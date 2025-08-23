@@ -16,8 +16,35 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
   const [mainImage, setMainImage] = useState<string>(property.image_urls?.[0] || '/placeholder.jpg');
   const [showModal, setShowModal] = useState<boolean>(false);
 
+  const content = {
+    en: {
+      location: 'Location',
+      keySpecifications: 'Key Specifications',
+      price: 'Price',
+      pricePerSqYard: 'Price per sq. yard',
+      area: 'Area',
+      amenities: 'Amenities',
+      investmentFeatures: 'Investment Features',
+      connectivityInfo: 'Connectivity Info',
+      contactUs: 'Contact Us',
+      whatsapp: 'WhatsApp Us',
+    },
+    te: {
+      location: 'స్థానం',
+      keySpecifications: 'ముఖ్య లక్షణాలు',
+      price: 'ధర',
+      pricePerSqYard: 'గజానికి ధర',
+      area: 'విస్తీర్ణం',
+      amenities: 'సౌకర్యాలు',
+      investmentFeatures: 'పెట్టుబడి ఫీచర్లు',
+      connectivityInfo: 'కనెక్టివిటీ సమాచారం',
+      contactUs: 'మమ్మల్ని సంప్రదించండి',
+      whatsapp: 'వాట్సాప్ చేయండి',
+    },
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8 animate-fade-in">
+    <div className="container mx-auto px-4 py-8 animate-fade-in dark:text-white">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-2">
           <div>
@@ -48,13 +75,13 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
           </div>
 
           <div className="mt-8">
-            <h1 className="text-3xl font-bold">{language === 'en' ? property.project_name : property.project_name_te}</h1>
-            <p className="mt-4">{language === 'en' ? property.description : property.description_te}</p>
+            <h1 className="text-3xl font-bold">{language === 'en' ? property.project_name : property.project_name_te || property.project_name}</h1>
+            <p className="mt-4 text-gray-600 dark:text-gray-300">{language === 'en' ? property.description : property.description_te || property.description}</p>
           </div>
 
           {property.google_maps_embed && (
             <div className="mt-8">
-              <h3 className="text-2xl font-bold mb-4">Location</h3>
+              <h3 className="text-2xl font-bold mb-4">{content[language].location}</h3>
               <div dangerouslySetInnerHTML={{ __html: property.google_maps_embed }} />
             </div>
           )}
@@ -62,38 +89,38 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
 
         <div className="md:col-span-1 space-y-8">
           <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold mb-4">Key Specifications</h3>
-            <ul>
-              <li>Price: {property.price} Lakhs</li>
-              <li>Price per sq. yard: {property.price_per_sq_yard}</li>
-              <li>Location: {property.location}</li>
-              <li>Area: {property.area_sq_yards} sq. yards</li>
+            <h3 className="text-2xl font-bold mb-4">{content[language].keySpecifications}</h3>
+            <ul className="text-gray-700 dark:text-gray-300">
+              <li>{content[language].price}: {property.price} {language === 'en' ? 'Lakhs' : 'లక్షలు'}</li>
+              <li>{content[language].pricePerSqYard}: {property.price_per_sq_yard}</li>
+              <li>{content[language].location}: {language === 'en' ? property.location : property.location_te || property.location}</li>
+              <li>{content[language].area}: {property.area_sq_yards} {language === 'en' ? 'sq. yards' : 'చ. గజాలు'}</li>
             </ul>
           </div>
 
           <div>
             <details className="mb-4 transition-all duration-300">
-              <summary className="text-xl font-bold cursor-pointer">Amenities</summary>
-              <ul className="list-disc list-inside mt-2">
-                {property.amenities?.map((item, index) => <li key={index}>{item}</li>)}
+              <summary className="text-xl font-bold cursor-pointer">{content[language].amenities}</summary>
+              <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
+                {(language === 'en' ? property.amenities : property.amenities_te || property.amenities)?.map((item, index) => <li key={index}>{item}</li>)}
               </ul>
             </details>
             <details className="mb-4 transition-all duration-300">
-              <summary className="text-xl font-bold cursor-pointer">Investment Features</summary>
-              <ul className="list-disc list-inside mt-2">
-                {property.investment_features?.map((item, index) => <li key={index}>{item}</li>)}
+              <summary className="text-xl font-bold cursor-pointer">{content[language].investmentFeatures}</summary>
+              <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
+                {(language === 'en' ? property.investment_features : property.investment_features_te || property.investment_features)?.map((item, index) => <li key={index}>{item}</li>)}
               </ul>
             </details>
             <details className="transition-all duration-300">
-              <summary className="text-xl font-bold cursor-pointer">Connectivity Info</summary>
-              <ul className="list-disc list-inside mt-2">
-                {property.connectivity_info?.map((item, index) => <li key={index}>{item}</li>)}
+              <summary className="text-xl font-bold cursor-pointer">{content[language].connectivityInfo}</summary>
+              <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
+                {(language === 'en' ? property.connectivity_info : property.connectivity_info_te || property.connectivity_info)?.map((item, index) => <li key={index}>{item}</li>)}
               </ul>
             </details>
           </div>
 
           <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold mb-4">Contact Us</h3>
+            <h3 className="text-2xl font-bold mb-4">{content[language].contactUs}</h3>
             <ContactForm />
           </div>
 
@@ -101,17 +128,17 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
             className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300"
           >
-            WhatsApp Us
+            {content[language].whatsapp}
           </a>
         </div>
       </div>
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-          <div className="relative bg-white p-2 rounded-lg max-w-3xl max-h-full overflow-auto">
+          <div className="relative bg-white dark:bg-gray-800 p-2 rounded-lg max-w-3xl max-h-full overflow-auto">
             <button 
               onClick={() => setShowModal(false)}
-              className="absolute top-2 right-2 text-gray-800 text-2xl font-bold bg-white rounded-full w-8 h-8 flex items-center justify-center"
+              className="absolute top-2 right-2 text-gray-800 dark:text-white text-2xl font-bold bg-white dark:bg-gray-800 rounded-full w-8 h-8 flex items-center justify-center"
             >
               &times;
             </button>
