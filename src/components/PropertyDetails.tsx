@@ -79,16 +79,7 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
             <p className="mt-4 text-gray-600 dark:text-gray-300">{language === 'en' ? property.description : property.description_te || property.description}</p>
           </div>
 
-          {property.google_maps_embed && (
-            <div className="mt-8">
-              <h3 className="text-2xl font-bold mb-4">{content[language].location}</h3>
-              <div dangerouslySetInnerHTML={{ __html: property.google_maps_embed }} />
-            </div>
-          )}
-        </div>
-
-        <div className="md:col-span-1 space-y-8">
-          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8">
             <h3 className="text-2xl font-bold mb-4">{content[language].keySpecifications}</h3>
             <ul className="text-gray-700 dark:text-gray-300">
               <li>{content[language].price}: {property.price} {language === 'en' ? 'Lakhs' : 'లక్షలు'}</li>
@@ -98,27 +89,37 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
             </ul>
           </div>
 
-          <div>
-            <details className="mb-4 transition-all duration-300">
-              <summary className="text-xl font-bold cursor-pointer">{content[language].amenities}</summary>
-              <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
-                {(language === 'en' ? property.amenities : property.amenities_te || property.amenities)?.map((item, index) => <li key={index}>{item}</li>)}
-              </ul>
-            </details>
-            <details className="mb-4 transition-all duration-300">
-              <summary className="text-xl font-bold cursor-pointer">{content[language].investmentFeatures}</summary>
-              <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
-                {(language === 'en' ? property.investment_features : property.investment_features_te || property.investment_features)?.map((item, index) => <li key={index}>{item}</li>)}
-              </ul>
-            </details>
-            <details className="transition-all duration-300">
-              <summary className="text-xl font-bold cursor-pointer">{content[language].connectivityInfo}</summary>
-              <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
-                {(language === 'en' ? property.connectivity_info : property.connectivity_info_te || property.connectivity_info)?.map((item, index) => <li key={index}>{item}</li>)}
-              </ul>
-            </details>
+          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8">
+            <h3 className="text-2xl font-bold mb-4">{content[language].amenities}</h3>
+            <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
+              {(language === 'en' ? property.amenities : property.amenities_te || property.amenities)?.map((item, index) => <li key={index}>{item}</li>)}
+            </ul>
           </div>
 
+          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8">
+            <h3 className="text-2xl font-bold mb-4">{content[language].investmentFeatures}</h3>
+            <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
+              {(language === 'en' ? property.investment_features : property.investment_features_te || property.investment_features)?.map((item, index) => <li key={index}>{item}</li>)}
+            </ul>
+          </div>
+
+          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8">
+            <h3 className="text-2xl font-bold mb-4">{content[language].connectivityInfo}</h3>
+            <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
+              {(language === 'en' ? property.connectivity_info : property.connectivity_info_te || property.connectivity_info)?.map((item, index) => <li key={index}>{item}</li>)}
+            </ul>
+          </div>
+
+          {property.google_maps_embed && (
+            <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8">
+              <h3 className="text-2xl font-bold mb-4">{content[language].location}</h3>
+              <div dangerouslySetInnerHTML={{ __html: property.google_maps_embed }} />
+            </div>
+          )}
+
+        </div>
+
+        <div className="md:col-span-1 space-y-8">
           <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
             <h3 className="text-2xl font-bold mb-4">{content[language].contactUs}</h3>
             <ContactForm />
