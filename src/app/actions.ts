@@ -7,7 +7,9 @@ export const submitContactForm = async (formData: FormData) => {
     const name = formData.get('name') as string;
     const phone = formData.get('phone') as string;
     const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
     const propertyUrl = formData.get('propertyUrl') as string;
+    const propertyName = formData.get('propertyName') as string;
 
     const auth = new google.auth.GoogleAuth({
       credentials: {
@@ -23,10 +25,10 @@ export const submitContactForm = async (formData: FormData) => {
 
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'A1:E1',
+      range: 'A1:G1',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
-        values: [[new Date().toISOString(), name, phone, email, propertyUrl]],
+        values: [[new Date().toISOString(), name, phone, email, message, propertyName, propertyUrl]],
       },
     });
 
