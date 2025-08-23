@@ -61,7 +61,7 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
           <ThemeToggle />
         </div>
       </header>
-      {children}
+      <main className="flex-grow">{children}</main>
       <footer className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white py-8 mt-12">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
