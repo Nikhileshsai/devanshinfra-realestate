@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import LanguageToggle from '@/components/LanguageToggle';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -51,9 +52,9 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
         </div>
         <nav>
           <ul className="flex space-x-4">
-            <li><a href="/" className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">{navContent[language].home}</a></li>
-            <li><a href="/properties" className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">{navContent[language].properties}</a></li>
-            <li><a href="/blogs" className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">{navContent[language].blogs}</a></li>
+            <li><Link href="/" className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">{navContent[language].home}</Link></li>
+            <li><Link href="/properties" className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">{navContent[language].properties}</Link></li>
+            <li><Link href="/blogs" className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">{navContent[language].blogs}</Link></li>
           </ul>
         </nav>
         <div className="flex items-center space-x-4">
@@ -78,8 +79,8 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
           <div>
             <h3 className="text-xl font-bold mb-4">{footerContent[language].links}</h3>
             <ul>
-              <li><a href="/" className="hover:underline">{footerContent[language].home}</a></li>
-              <li><a href="/properties" className="hover:underline">{footerContent[language].properties}</a></li>
+              <li><Link href="/" className="hover:underline">{footerContent[language].home}</Link></li>
+              <li><Link href="/properties" className="hover:underline">{footerContent[language].properties}</Link></li>
             </ul>
           </div>
         </div>
