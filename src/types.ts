@@ -19,3 +19,23 @@ export type Property = {
   connectivity_info_te?: string[];
   image_urls?: string[];
 };
+
+export type Blog = {
+  id: number;
+  blog_title: string;
+  english_description: string;
+  telugu_description: string;
+  image_url: string;
+  created_at: string;
+  blog_title_telugu: string;
+};
+
+export type Blog = {
+  id: number;
+  blog_title: string;
+  english_description: string;
+  telugu_description: string;
+  image_url: string;
+  created_at: string;
+  blog_title_telugu: string;
+};

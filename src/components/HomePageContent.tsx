@@ -75,29 +75,14 @@ const HomePageContent: React.FC<HomePageContentProps> = ({ featuredProperties })
 
       {/* The Advantage Section */}
       <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 rounded-lg overflow-hidden">
-              <Image 
-                src="/advantage-image.jpg"
-                alt="The Vizag Advantage"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">{advantageContent[language].title}</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                {advantageContent[language].p1}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                {advantageContent[language].p2}
-              </p>
-              <Link href="/blogs" className="bg-indigo-600 text-white py-3 px-8 rounded-md text-lg font-semibold hover:bg-indigo-700 transition-colors duration-300">
-                {advantageContent[language].readMore}
-              </Link>
-            </div>
-          </div>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">{advantageContent[language].title}</h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            {advantageContent[language].description}
+          </p>
+          <Link href="/blogs" className="bg-indigo-600 text-white py-3 px-8 rounded-md text-lg font-semibold hover:bg-indigo-700 transition-colors duration-300">
+            {advantageContent[language].readMore}
+          </Link>
         </div>
       </section>
 
