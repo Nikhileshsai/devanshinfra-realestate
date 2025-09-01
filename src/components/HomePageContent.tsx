@@ -49,7 +49,7 @@ const HomePageContent: React.FC<HomePageContentProps> = ({ featuredProperties })
 
         <div className="relative">
           {/* Hero Section */}
-          <div className="h-screen flex flex-col items-center justify-center text-white text-center px-4">
+          <div className="h-[75vh] md:h-screen flex flex-col items-center justify-center text-white text-center px-4">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">{heroContent[language].title}</h1>
             <p className="text-lg md:text-xl mb-8">{heroContent[language].subtitle}</p>
             <Link href="/properties" className="bg-indigo-600 text-white py-3 px-8 rounded-md text-lg font-semibold hover:bg-indigo-700 transition-colors duration-300">
