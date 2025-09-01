@@ -54,6 +54,8 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
                 alt={`Image of ${property.project_name}`}
                 fill
                 className="rounded-lg object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+                priority
               />
             </div>
             <div className="flex space-x-2 overflow-x-auto pb-2">

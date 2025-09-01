@@ -28,12 +28,13 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   return (
     <Link href={`/properties/${property.id}`} className="block">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out overflow-hidden transform hover:scale-105">
-        <div className="relative h-48 w-full">
+        <div className="relative w-full aspect-[16/9]">
           <Image
             src={property.image_urls?.[0] || '/placeholder.jpg'}
             alt={`Image of ${property.project_name}`}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           />
         </div>
         <div className="p-4">
