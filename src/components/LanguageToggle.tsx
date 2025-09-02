@@ -7,12 +7,16 @@ const LanguageToggle = () => {
   const { language, toggleLanguage } = useLanguage();
 
   return (
-    <button 
+    <div
       onClick={toggleLanguage}
-      className="px-4 py-2 font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-colors duration-300"
-    >
-      {language === 'en' ? 'తెలుగు' : 'English'}
-    </button>
+      className="relative w-16 h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 bg-indigo-600">
+      <span className={`absolute left-2 text-xs font-bold ${language === 'en' ? 'text-white' : 'text-gray-600 dark:text-gray-400'}`}>EN</span>
+      <span className={`absolute right-2 text-xs font-bold ${language === 'te' ? 'text-white' : 'text-gray-600 dark:text-gray-400'}`}>TE</span>
+      <div
+        className={`bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300
+          ${language === 'en' ? 'translate-x-8' : 'translate-x-0'}`}
+      />
+    </div>
   );
 };
 
