@@ -116,18 +116,18 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
       </main>
       <footer className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white py-2 shrink-0">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
+          <div className="md:col-span-1">
             <h3 className="text-xs md:text-xl font-bold mb-4">{footerContent[language].contact}</h3>
             <p className="text-xs md:text-base">Email: devanshinfravizag@gmail.com</p>
             <p className="text-xs md:text-base">Phone: +1 (123) 456-7890</p>
           </div>
-          <div>
+          <div className="hidden md:block md:col-span-1">
             <h3 className="text-xs md:text-xl font-bold mb-4">{footerContent[language].office}</h3>
             <p className="text-xs md:text-base">123 Real Estate Ave,</p>
             <p className="text-xs md:text-base">City, State, 12345</p>
             <p className="text-xs md:text-base">Country</p>
           </div>
-          <div>
+          <div className="hidden md:block md:col-span-1">
             <h3 className="text-xs md:text-xl font-bold mb-4">{footerContent[language].links}</h3>
             <ul>
               <li><Link href="/" className="text-xs md:text-base hover:underline">{footerContent[language].home}</Link></li>

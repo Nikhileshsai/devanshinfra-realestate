@@ -7,9 +7,10 @@ import { useLanguage } from '@/context/LanguageContext';
 
 interface PropertyCardProps {
   property: Property;
+  isFirst?: boolean;
 }
 
-const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
+const PropertyCard: React.FC<PropertyCardProps> = ({ property, isFirst }) => {
   const { language } = useLanguage();
 
   const content = {
@@ -35,6 +36,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            priority={isFirst}
           />
         </div>
         <div className="p-4">

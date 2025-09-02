@@ -14,8 +14,8 @@ const BlogsPageContent = ({ blogs }: { blogs: Blog[] }) => {
         {language === 'en' ? 'Our Latest Blogs' : 'మా తాజా బ్లాగులు'}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> {/* Grid layout */}
-        {blogs.map((blog) => (
-          <BlogCard key={blog.id} blog={blog} /> // Use BlogCard component
+        {blogs.map((blog, index) => (
+          <BlogCard key={blog.id} blog={blog} isFirst={index === 0} /> // Use BlogCard component
         ))}
       </div>
     </div>

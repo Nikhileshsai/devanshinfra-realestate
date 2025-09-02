@@ -62,15 +62,18 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
               {property.image_urls?.map((url, index) => (
                 <div 
                   key={index} 
-                  className={`relative h-24 w-24 flex-shrink-0 transform hover:scale-110 transition-transform duration-300 cursor-pointer ${mainImage === url ? 'border-2 border-indigo-500' : ''}`}
+                  className={`relative w-32 flex-shrink-0 transform hover:scale-110 transition-transform duration-300 cursor-pointer ${mainImage === url ? 'border-2 border-indigo-500' : ''}`}
                   onClick={() => setMainImage(url)}
                 >
-                  <Image
-                    src={url}
-                    alt={`Thumbnail ${index + 1}`}
-                    fill
-                    className="rounded-lg object-cover"
-                  />
+                  <div className="relative aspect-[16/9]">
+                    <Image
+                      src={url}
+                      alt={`Thumbnail ${index + 1}`}
+                      fill
+                      className="rounded-lg object-cover"
+                      sizes="128px"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -115,7 +118,9 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
           {property.google_maps_embed && (
             <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8">
               <h3 className="text-2xl font-bold mb-4">{content[language].location}</h3>
-              <div dangerouslySetInnerHTML={{ __html: property.google_maps_embed }} />
+              <div className="map-container">
+                <div dangerouslySetInnerHTML={{ __html: property.google_maps_embed }} />
+              </div>
             </div>
           )}
 
@@ -151,6 +156,7 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
               width={800}
               height={600}
               className="rounded-lg object-contain"
+              sizes="(max-width: 768px) 100vw, 800px"
             />
           </div>
         </div>

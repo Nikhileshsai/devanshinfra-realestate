@@ -32,3 +32,25 @@ body {
     scrollbar-width: none;
   }
 }
+
+.map-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  height: 0;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .map-container {
+    padding-bottom: 0;
+    height: 450px; /* You can adjust this height as needed */
+  }
+}

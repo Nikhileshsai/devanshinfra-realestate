@@ -8,9 +8,10 @@ import Link from 'next/link'; // Import Link for the "Read More" button
 
 interface BlogCardProps {
   blog: Blog;
+  isFirst?: boolean;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ blog, isFirst }) => {
   const { language } = useLanguage();
 
   const content = {
@@ -32,6 +33,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             fill
             className="rounded-lg object-contain"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            priority={isFirst}
           />
         </div>
       )}
