@@ -50,7 +50,7 @@ const propertyTypes = [
     te: {
       title: 'రియల్ ఎస్టేట్ గురించి మా బ్లాగులను చదవండి',
     },
-    image: '/advantage-image.jpg',
+    image: '/placeholder.jpg',
     link: '/blogs',
   },
 ];
@@ -71,9 +71,8 @@ const PropertyTypeCards = () => {
                   <Image
                     src={propertyType.image}
                     alt={propertyType[language].title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="group-hover:opacity-90 transition-opacity duration-300"
+                    fill
+                    className="object-cover group-hover:opacity-90 transition-opacity duration-300"
                     quality={60}
                   />
                 </div>

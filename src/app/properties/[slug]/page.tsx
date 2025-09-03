@@ -6,35 +6,35 @@ import PropertyDetails from '@/components/PropertyDetails';
 import PageOverlay from '@/components/PageOverlay';
 
 export async function generateStaticParams() {
-  const { data: properties, error } = await supabase.from('properties').select('id');
+  const { data: properties, error } = await supabase.from('properties').select('slug');
 
   if (error) {
-    console.error('Error fetching property ids:', error);
+    console.error('Error fetching property slugs:', error);
     return [];
   }
 
   return properties?.map((property) => ({
-    id: property.id,
+    slug: property.slug,
   })) || [];
 }
 
-const getProperty = async (id: string): Promise<Property | null> => {
+const getProperty = async (slug: string): Promise<Property | null> => {
   const { data, error } = await supabase
     .from('properties')
     .select('*')
-    .eq('id', id)
+    .eq('slug', slug)
     .single();
 
   if (error) {
-    console.error(`Error fetching property with id ${id}:`, error);
+    console.error(`Error fetching property with slug ${slug}:`, error);
     return null;
   }
 
   return data;
 };
 
-const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
-  const property = await getProperty(params.id);
+const PropertyDetailPage = async ({ params }: { params: { slug: string } }) => {
+  const property = await getProperty(params.slug);
 
   if (!property) {
     return <div>Property not found</div>;

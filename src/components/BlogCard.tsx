@@ -51,7 +51,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, isFirst }) => {
         <p className="text-gray-700 dark:text-gray-300 mt-2 line-clamp-3 leading-relaxed">
           {language === 'te' ? blog.telugu_description : blog.english_description}
         </p>
-        <Link href={`/blogs/${blog.id}`} className="mt-4 inline-block bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-300">
+        <Link href={`/blogs/${blog.slug}`} className="mt-4 inline-block bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-300">
           {content[language].readMore}
         </Link>
       </div>

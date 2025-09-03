@@ -1,6 +1,6 @@
-
 export type Property = {
   id: string;
+  slug: string;
   project_name: string;
   project_name_te?: string;
   location?: string;
@@ -22,16 +22,7 @@ export type Property = {
 
 export type Blog = {
   id: number;
-  blog_title: string;
-  english_description: string;
-  telugu_description: string;
-  image_url: string;
-  created_at: string;
-  blog_title_telugu: string;
-};
-
-export type Blog = {
-  id: number;
+  slug: string;
   blog_title: string;
   english_description: string;
   telugu_description: string;

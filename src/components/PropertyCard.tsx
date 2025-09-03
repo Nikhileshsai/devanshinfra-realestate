@@ -27,7 +27,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, isFirst }) => {
   };
 
   return (
-    <Link href={`/properties/${property.id}`} className="block">
+    <Link href={`/properties/${property.slug}`} className="block">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out overflow-hidden transform hover:scale-105">
         <div className="relative w-full aspect-[16/9]">
           <Image

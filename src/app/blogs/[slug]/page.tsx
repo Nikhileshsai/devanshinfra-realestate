@@ -7,21 +7,21 @@ import PageOverlay from '@/components/PageOverlay';
 
 // This function is for static site generation (SSG)
 export async function generateStaticParams() {
-  const { data: blogs, error } = await supabase.from('blogs').select('id');
+  const { data: blogs, error } = await supabase.from('blogs').select('slug');
 
   if (error) {
-    console.error('Error fetching blog IDs for static params:', error);
+    console.error('Error fetching blog slugs for static params:', error);
     return [];
   }
 
   return blogs.map((blog) => ({
-    id: blog.id.toString(), // Ensure ID is a string
+    slug: blog.slug,
   }));
 }
 
 interface BlogPageProps {
   params: {
-    id: string;
+    slug: string;
   };
 }
 
@@ -29,7 +29,7 @@ const BlogPage = async ({ params }: BlogPageProps) => {
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
-    .eq('id', params.id)
+    .eq('slug', params.slug)
     .single();
 
   if (error || !blog) {
