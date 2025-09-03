@@ -116,7 +116,7 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
           {children}
         </main>
         <footer className="bg-white/10 dark:bg-black/10 backdrop-blur-lg text-gray-800 dark:text-white py-2 shrink-0">
-          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">
               <h3 className="text-xs md:text-xl font-bold mb-4">{footerContent[language].contact}</h3>
               <p className="text-xs md:text-base">Email: devanshinfravizag@gmail.com</p>
@@ -135,6 +135,17 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
                 <li><Link href="/properties" className="text-xs md:text-base hover:underline">{footerContent[language].properties}</Link></li>
                 <li><Link href="/blogs" className="text-xs md:text-base hover:underline">{navContent[language].blogs}</Link></li>
               </ul>
+            </div>
+            <div className="hidden md:block md:col-span-1">
+              <h3 className="text-xs md:text-xl font-bold mb-4">Social Media</h3>
+              <div className="flex space-x-4">
+                <Link href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.5" y1="6.5" y2="6.5"/></svg>
+                </Link>
+                <Link href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </Link>
+              </div>
             </div>
           </div>
           <div className="text-center mt-2 md:mt-4 text-xs md:text-sm text-gray-500 dark:text-gray-400">
