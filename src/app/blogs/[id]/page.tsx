@@ -3,6 +3,7 @@ import { supabase } from '@/lib/supabase';
 import { Blog } from '@/types';
 import { notFound } from 'next/navigation';
 import BlogDetailsContent from '@/components/BlogDetailsContent';
+import PageOverlay from '@/components/PageOverlay';
 
 // This function is for static site generation (SSG)
 export async function generateStaticParams() {
@@ -36,7 +37,12 @@ const BlogPage = async ({ params }: BlogPageProps) => {
     notFound(); // Show 404 page if blog not found
   }
 
-  return <BlogDetailsContent blog={blog as Blog} />;
+  return (
+    <>
+      <PageOverlay backgroundImage="/hero-bg.jpg" alpha={0.7} />
+      <BlogDetailsContent blog={blog as Blog} />
+    </>
+  );
 };
 
 export default BlogPage;

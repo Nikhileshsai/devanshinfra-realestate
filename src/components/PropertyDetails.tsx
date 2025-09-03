@@ -79,6 +79,27 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
     <div className="container mx-auto px-4 py-12 animate-fade-in dark:text-white">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2">{language === 'en' ? property.project_name : property.project_name_te || property.project_name}</h1>
+            <div className="flex items-center text-gray-500 dark:text-gray-400 mb-4">
+              <MapPin className="w-5 h-5 mr-2" />
+              <span>{language === 'en' ? property.location : property.location_te || property.location}</span>
+            </div>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">{language === 'en' ? property.description : property.description_te || property.description}</p>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+            <h3 className="text-xl md:text-2xl font-bold mb-6 flex items-center"><Zap className="w-6 h-6 mr-3 text-indigo-500"/>{content[language].amenities}</h3>
+            <ul className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {(language === 'en' ? property.amenities : property.amenities_te || property.amenities)?.map((item, index) => (
+                  <li key={index} className="flex items-center">
+                    <Star className="w-5 h-5 mr-2 text-yellow-500"/>
+                    <span>{item}</span>
+                  </li>
+                ))}
+            </ul>
+          </div>
+
           <div className="mb-8 flex gap-2 h-[300px] md:h-[500px]">
             <div className="w-2/3 h-full relative rounded-lg overflow-hidden cursor-pointer" onClick={() => openGallery(0)}>
               <Image
@@ -117,16 +138,6 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
             </div>
           </div>
 
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2">{language === 'en' ? property.project_name : property.project_name_te || property.project_name}</h1>
-            <div className="flex items-center text-gray-500 dark:text-gray-400">
-              <MapPin className="w-5 h-5 mr-2" />
-              <span>{language === 'en' ? property.location : property.location_te || property.location}</span>
-            </div>
-          </div>
-
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">{language === 'en' ? property.description : property.description_te || property.description}</p>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
               <h3 className="text-xl md:text-2xl font-bold mb-6 flex items-center"><Building className="w-6 h-6 mr-3 text-indigo-500"/>{content[language].keySpecifications}</h3>
@@ -142,18 +153,6 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
                 {(language === 'en' ? property.investment_features : property.investment_features_te || property.investment_features)?.map((item, index) => <li key={index} className="flex items-center"><Star className="w-4 h-4 mr-2 text-yellow-500"/>{item}</li>)}
               </ul>
             </div>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
-            <h3 className="text-xl md:text-2xl font-bold mb-6 flex items-center"><Zap className="w-6 h-6 mr-3 text-indigo-500"/>{content[language].amenities}</h3>
-            <ul className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {(language === 'en' ? property.amenities : property.amenities_te || property.amenities)?.map((item, index) => (
-                  <li key={index} className="flex items-center">
-                    <Star className="w-5 h-5 mr-2 text-yellow-500"/>
-                    <span>{item}</span>
-                  </li>
-                ))}
-            </ul>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
@@ -173,14 +172,14 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
           )}
         </div>
 
-        <div className="lg:col-span-1 space-y-8 sticky top-24">
+        <div className="lg:col-span-1 space-y-8">
           <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl">
             <h3 className="text-2xl md:text-3xl font-bold mb-6 flex items-center"><Phone className="w-8 h-8 mr-4 text-indigo-500"/>{content[language].contactUs}</h3>
             <ContactForm propertyName={language === 'en' ? property.project_name : property.project_name_te || property.project_name} />
           </div>
           <a 
             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
-            className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300 flex items-center space-x-2"
+            className="bg-green-500 text-white p-4 rounded-md shadow-lg hover:bg-green-600 transition-colors duration-300 flex items-center justify-center space-x-2 w-full"
           >
             <span>{content[language].whatsapp}</span>
           </a>

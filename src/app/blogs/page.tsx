@@ -1,6 +1,7 @@
 import React from 'react';
 import { supabase } from '@/lib/supabase';
 import BlogsPageContent from './BlogsPageContent';
+import PageOverlay from '@/components/PageOverlay';
 import { Blog } from '@/types';
 
 const BlogsPage = async () => {
@@ -12,7 +13,12 @@ const BlogsPage = async () => {
     return <div>Error fetching blogs</div>;
   }
 
-  return <BlogsPageContent blogs={blogs as Blog[]} />;
+  return (
+    <>
+      <PageOverlay backgroundImage="/hero-bg.jpg" alpha={0.5} />
+      <BlogsPageContent blogs={blogs as Blog[]} />
+    </>
+  );
 };
 
 export default BlogsPage;

@@ -3,6 +3,7 @@ import React from 'react';
 import { Property } from '@/types';
 import { supabase } from '@/lib/supabase';
 import PropertyDetails from '@/components/PropertyDetails';
+import PageOverlay from '@/components/PageOverlay';
 
 export async function generateStaticParams() {
   const { data: properties, error } = await supabase.from('properties').select('id');
@@ -39,7 +40,12 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
     return <div>Property not found</div>;
   }
 
-  return <PropertyDetails property={property} />;
+  return (
+    <>
+      <PageOverlay backgroundImage="/hero-bg.jpg" alpha={0.5} />
+      <PropertyDetails property={property} />
+    </>
+  );
 };
 
 export default PropertyDetailPage;
